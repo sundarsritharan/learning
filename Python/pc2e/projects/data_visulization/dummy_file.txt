@@ -1,0 +1,38 @@
+# test python git visualization 
+import unittest
+import random
+from python_repos import requests
+
+
+class PythonReposTestCase(unittest.TestCase):
+    """ test status code, number of repos, items returned """
+
+    def Setup(self):
+        """ Setup up API access to Github and use the response for testing """
+        language = 'python'
+        url = f'https://api.github.com/search/repositories?q={language}:python&sort=stars'
+        headers = {'Accept': 'application/vnd.github.v3+json'}
+        self.r = requests.get(url,headers=headers)
+
+    
+    def test_status_code(self):
+        """ does a simple test to check the status code of api call """
+        print(type(self.r))
+
+        def test_items_returned(self):
+        """ check of the items returned are same """ 
+        response_dict = self.r.json()
+        repo_dicts = response_dict['items']
+        repo_num = random.randint(1,len(repo_dicts))
+        self.assertEqual(len(repo_dicts[repo_num]),74)
+
+    def test_repositories_count(self):
+        """ Check the no. of repositories returned in API call """
+        #store the API response in dictionary
+        response_dict = self.r.json()
+        total_repositories = response_dict['total_count'] 
+        self.assertGreater(total_repositories, 50_000)
+
+
+if __name__ == '__main__':
+    unittest.main()

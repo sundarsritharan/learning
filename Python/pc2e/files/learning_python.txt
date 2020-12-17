@@ -1,0 +1,3 @@
+In Python you can use standard modules to accomplish statistics functions.
+In Python Use keyword in to find a particular element in the list and not in to check if an item is not in the list.
+In Python Use del keyword to permentently delete a key/value pair from a dictionary.
