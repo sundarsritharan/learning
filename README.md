@@ -1,2 +1,2 @@
 # All my learning for lifetime will be here
-all my learning 
+This repository will have all my learnings and notes. 
